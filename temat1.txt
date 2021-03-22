@@ -1,0 +1,31 @@
+Opis programu "Warehouse" Filip Giermek 2020
+
+Program wykonany w ramach przedmiotu Programowanie Obiektowe AGH.
+
+- Program składa się z dwóch klas (Warehouse, Article) oraz części main.
+
+- Założenie programu:
+ Program imituje interfejs magazynu, który przechowuje towar. Towar charakteryzuje się typem (Name), numerem ID oraz liczbą sztuk.
+ Pozycje z Menu pozwalają na dodanie dowolnej liczby typów towaru oraz dodanie do magazynu lub odebranie z niego dowolnej liczby sztuk 
+ z wybranej liczby towarów. Program posiada pętle warunkowe zabezpieczające sytuacje, w których użytkownik będzie chciał np. pobrać z magazynu więcej
+ sztuk danego towaru niż magazyn posiada lub będzie chciał dodać sztuki towaru, którego ID nie ma na liście. Poza interakcją z zawartością magazynu,
+ z Menu można również wyświetlić listę zawartości magazynu oraz zamknąć program.
+
+- W pliku main.cpp oprócz funkcji main() znajduje się również:
+	
+  funkcja Menu() - menu wypisywane jest po zakończeniu każdej wybranej akcji, 
+		           aby móc dalej korzystać z programu 
+	
+  funkcja insert_collectArticle() - poprzez podanie odpowiedniej komendy 
+				                    obsługuje dodawanie i odbieranie towarów 
+				                    (wywołanie odpowiednich funkcji w pętlach)
+
+- Info pozostałe:
+ Program pozwala na wpisywanie wieloczłonowych nazw towarów ze spacjami (lin. 42-44 Warehouse.cpp)
+
+ Klasa warehouse w części private posiada wektor towarów, którego rozmiar
+ i zawartość jest definiowana w czasie działania programu (lin. 14 Warehouse.h)
+
+ (linijka 35 main.cpp) - stworzona referencja do wektora, który pobrany jest przez wskaźnik, aby możliwa był edycja.
+
+ Całość dla potrzeb estetycznych została odsunięta od lewej krawędzi okna.
