@@ -1,0 +1,51 @@
+Opis programu "Warehouse Inc." Filip Giermek 2020
+
+Program wykonany w ramach przedmiotu Programowanie Obiektowe AGH.
+
+- Program składa się z sześciu klas (Warehouse, Article, Loose, Liquid, Product, Forklift) oraz części main.
+    klasy Liquid, Loose i Article dziedziczą po klasie abstrakcynej Product.
+
+- Założenie programu:
+ Program imituje interfejs obsługi magazynów, które przechowują towary. Towar charakteryzuje się typem (Name), numerem ID, liczbą sztuk oraz jednostką.
+ Pozycje z Menu pozwalają na dodanie dowolnej liczby typów towaru oraz dodanie do magazynu, odebranie z niego dowolnej liczby sztuk
+ z wybranej liczby towarów, utworzenie większej liczby magazynów oraz łączenie lub rozdzelanie towarów. Dodatkowo możliwa jest również
+ obsługa Paleciaka, który może przechowywać wskazane towary. Istnieje możliwość wyświetlenia zawartości wskazanego magazynu lub Paleciaka.
+ Program posiada obsługę sytuacji, gdy istnieje tylko jeden magazyn - wtedy nie pyta za każdym razem o wskazanie magazynu do wykonania operacji.
+ Z wywołanie każdej opcji, która bazuje na zawartości magazynu sprawdzane jest jego wypełnienie. Jeśli magazyn jest pusty, wyświetla się komunikat
+ oraz operacja się kończy. Obsłużone są również sytuacje, gdy wielokrotnie w programie należy wskazać magazyn, lub towar. W przypadku, gdy
+ dany magazyn lub towar nie istenieje, magazyn posiada mniej towarów, towar ma mniej sztuk, lub przy rozdzielaniu towarów zostało mniej sztuk do przypisania
+ pojawia się odpowiedni komunikat.
+
+- W pliku main.cpp oprócz funkcji main() znajduje się również:
+	
+  funkcja Menu() - menu wypisywane jest po zakończeniu każdej wybranej akcji, 
+		           aby móc dalej korzystać z programu 
+	
+  funkcja insert_collect_article() - poprzez podanie odpowiedniej komendy
+				                    obsługuje dodawanie i odbieranie towarów 
+				                    (wywołanie odpowiednich funkcji w pętlach)
+
+- Hierarchia klas towarów:
+    Klasą bazową jest klasa abstrakcyjna Produkt. Posiada pola dziedziczone przez towary, a także funkcje, które można wykonać bezwzględu na typ towaru.
+    Dodatkowo posiada również klasy wirtualne, które w klasach dziedziczących posiadają odpowiednie wersje.
+
+- Zarówno klasa Forklift (Paleciak), jak i Warehouse (Magazyn) posiadają wektory ze wskaźnikami do klasy Produkt. Różnicą jest to, że klasa Warehouse posiada
+    wektor wektorów wskaźników do klasy Product, co podyktowane jest możliwością obsługi wielu magazynów.
+
+- Info dodatkowe:
+    Zgodnie z zaleceniem:
+     funkcje 'get' są typu const.
+     wpisywanie 'insert' lub 'collect' zostało zastąpione przez wpisywanie liczb.
+     zapis zostal ujednolicony.
+    Program tworząc nowy typ towaru, wybiera ID większe niż największe wśród wszystkich magazynów.
+    Dodane pole _unit służy do wypisywania jednostki przy ilości sztuk w magazynie lub paleciaku.
+    Operacja dzielenia towaru przypisuje nowym towarom ID o 1 większe niż największe w magazynie.
+    Operacja scalania towarów przypisuje nowemu towarowi ID pierwszego towaru scalanego.
+    Dodatkowo istnieje opcja zwiększenia liczby magazynów w trakcie.
+    Zdecydowałem, się metody 'scal' i 'podziel' zapisać w klasie Warehouse, a nie w klasie Towar, ponieważ w ten sposób łatwiej jest
+        odnieść się do zawartości magazynów, oraz ciała funkcji znajdują się tylko w jednym miejscu. bloki 'switch' obsługują tworzenie
+        odpowiedniego typu towaru. Niestety nie zdołałem wykonać poprawnie procedury przenoszenie z paleciaka
+        do magazynu (take_off_forklift). Zakomentowałem odpowiednie funkcje.
+    
+- Czytanie z pliku:
+    w folderze znajduje się plik stdin.txt, które przeprowadza program, pokazując wszystkie procedury.
